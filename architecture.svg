@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="920" height="420" fill="#ffffff"/>
+  <text x="460" y="32" text-anchor="middle" font-size="22" font-weight="bold" fill="#232f3e">AWS CloudFront CDN — Request Flow</text>
+
+  <!-- User -->
+  <rect x="30" y="150" width="150" height="90" rx="10" fill="#ffeadb" stroke="#ff9900" stroke-width="2"/>
+  <text x="105" y="185" text-anchor="middle" font-size="16" font-weight="bold" fill="#232f3e">User</text>
+  <text x="105" y="208" text-anchor="middle" font-size="13" fill="#545b64">Browser / App</text>
+
+  <!-- Edge -->
+  <rect x="260" y="120" width="190" height="150" rx="10" fill="#fff2cc" stroke="#ff9900" stroke-width="2"/>
+  <text x="355" y="150" text-anchor="middle" font-size="16" font-weight="bold" fill="#232f3e">Edge Location</text>
+  <text x="355" y="173" text-anchor="middle" font-size="13" fill="#545b64">CloudFront cache</text>
+  <text x="355" y="196" text-anchor="middle" font-size="13" fill="#545b64">Cache hit? Serve fast</text>
+  <text x="355" y="219" text-anchor="middle" font-size="13" fill="#545b64">Cache miss? Fetch origin</text>
+  <text x="355" y="242" text-anchor="middle" font-size="13" fill="#545b64">WAF + HTTPS</text>
+
+  <!-- Origins -->
+  <rect x="540" y="70" width="180" height="80" rx="10" fill="#d1e7dd" stroke="#1a7f4b" stroke-width="2"/>
+  <text x="630" y="102" text-anchor="middle" font-size="15" font-weight="bold" fill="#232f3e">S3 (private)</text>
+  <text x="630" y="124" text-anchor="middle" font-size="13" fill="#545b64">via OAC only</text>
+
+  <rect x="540" y="170" width="180" height="80" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="630" y="202" text-anchor="middle" font-size="15" font-weight="bold" fill="#232f3e">ALB / API GW</text>
+  <text x="630" y="224" text-anchor="middle" font-size="13" fill="#545b64">Dynamic origin</text>
+
+  <rect x="540" y="270" width="180" height="80" rx="10" fill="#e8e0f5" stroke="#6b4fa1" stroke-width="2"/>
+  <text x="630" y="202" text-anchor="middle" font-size="15" font-weight="bold" fill="#232f3e" opacity="0">.</text>
+  <text x="630" y="302" text-anchor="middle" font-size="15" font-weight="bold" fill="#232f3e">Origin Shield</text>
+  <text x="630" y="324" text-anchor="middle" font-size="13" fill="#545b64">Collapse misses</text>
+
+  <!-- Arrows -->
+  <line x1="180" y1="195" x2="260" y2="195" stroke="#232f3e" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="160" x2="540" y2="120" stroke="#1a7f4b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="210" x2="540" y2="210" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="240" x2="540" y2="300" stroke="#6b4fa1" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#232f3e"/>
+    </marker>
+  </defs>
+
+  <text x="460" y="390" text-anchor="middle" font-size="13" fill="#545b64">Rule: private origin, cache hashed assets for a year, never cache per-user responses.</text>
+</svg>
