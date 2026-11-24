@@ -23,6 +23,10 @@
   origin, invalidations as a deployment strategy, and forgetting that
   **data transfer out of CloudFront is cheaper than out of S3/EC2 directly**.
 
+## 🌍 In plain words — what is this, really?
+
+Think about ordering food from a restaurant that only has one kitchen, far away in another city — every order would arrive late and cold. So the restaurant opens many small pickup counters near its customers, each stocked with the most popular dishes. CloudFront works the same way for websites and apps: it copies your files, images, and pages to edge locations all over the world, close to your users. When someone visits, they get the content from the nearest counter instead of travelling all the way to your main server. In technical terms, that main server is the origin, the copies are the cache, and getting content nearby is why CloudFront makes sites feel fast.
+
 ## Architecture
 
 ![Architecture](architecture.svg)
@@ -124,11 +128,6 @@ terraform apply
 # Upload your site:
 aws s3 sync ./dist s3://$(terraform output -raw bucket_name)
 ```
-
-## Quiz teaser
-
-Can you spot why a SPA's `index.html` should never get a 1-year TTL — and
-what breaks first if it does? Take the full quiz in [`quiz.md`](quiz.md).
 
 ## Further reading
 
